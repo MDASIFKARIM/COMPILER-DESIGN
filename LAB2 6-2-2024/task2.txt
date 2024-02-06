@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool Operator(char c) {
+    string operators = "+-*/%=><&|!^";
+    return operators.find(c) != string::npos;
+}
+
+int main() {
+    string input;
+    cout << "Enter a string: ";
+    getline(cin, input);
+
+    cout << "Operators : ";
+    for (char c : input) {
+        if (Operator(c)) {
+            cout << c << " ";
+        }
+    }
+    cout << endl;
+
+    return 0;
+}

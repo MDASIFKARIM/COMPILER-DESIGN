@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+bool Constant(const string& input) {
+    for (char ch : input) {
+        if (!isdigit(ch)) {  
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    string userInput;
+
+    
+    cout << "Enter a value: ";
+    cin >> userInput;
+
+   
+    if (Constant(userInput)) {
+        cout << "Numeric constant\n";
+    } else {
+        cout << "Not numeric\n";
+    }
+
+    return 0;
+}
