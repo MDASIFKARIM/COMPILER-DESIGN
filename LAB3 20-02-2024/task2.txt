@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+#include <unordered_set>  
+
+using namespace std;  
+
+bool isValidIdentifier(const string& str) {
+    if (str.empty()) {
+        return false;
+    }
+    
+    
+    unordered_set<string> cppKeywords = {
+        "int", "float", "double", "char", "long", "short",
+        "bool", "void", "auto", "const", "static", "unsigned",
+        "signed", "volatile", "wchar_t", "char16_t", "char32_t",
+        "if", "else if", "else","while", "do-while","switch", "case","default", "Break","parameters", "return_type","function_name", "Continue statements","arr", "array","*ptr", "Pointer","Class", "ClassName ","Object", "obj","inheritance", "polymorphism","class DerivedClass", "accessSpecifier","BaseClass", "virtual","function", "function overriding","File I/O", "ifstream","ofstream", "Exception Handling","try", "catch","throw", "finally","namespaces", "std","include", "unordered","false", "true","string","cout", "cin","for","while", "do-while","switch","case", "choice","encapsulation","constructors", "public","private","get", "set","main","return", "structures","struct","loop"
+    };
+
+    
+    if (cppKeywords.find(str) != cppKeywords.end()) {
+        return false;
+    }
+    
+    
+    if (!isalpha(str[0]) && str[0] != '_') {
+        return false;
+    }
+
+    
+    for (size_t i = 1; i < str.length(); ++i) {
+        if (!isalnum(str[i]) && str[i] != '_') {
+            return false;
+        }
+    }
+
+    
+    return true;
+}
+
+int main() {
+    string userInput;
+    cout << "Enter the  variable name: ";
+    cin >> userInput;
+
+    if (isValidIdentifier(userInput)) {
+        cout << "The input \"" << userInput << "\" 1.\n";
+    } else {
+        cout << "The input \"" << userInput << "\" 0.\n";
+    }
+
+    return 0;
+}
